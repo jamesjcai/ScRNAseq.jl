@@ -1,4 +1,4 @@
-using TableReader
+# using TableReader
 
 rescale(A; dims=1) = (A .- mean(A, dims=dims)) ./ max.(std(A, dims=dims), eps())
 
