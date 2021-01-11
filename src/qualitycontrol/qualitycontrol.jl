@@ -1,4 +1,4 @@
-module Qualitycontrol
+module QualityControl
 
 using Statistics, SparseArrays
 

@@ -1,4 +1,4 @@
-module Fileio
+module FileIO
 
 using DelimitedFiles, MatrixMarket, UnicodePlots, MAT, CSV, DataFrames
 export readmm,

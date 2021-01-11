@@ -8,20 +8,26 @@
 module ScRNAseq
 
 export
-    Fileio,
-    Qualitycontrol,
+    FileIO,
+    QualityControl,
     Transformation,
-    Embedding
+    Normalization,
+    Embedding,
+    GeneRegulatoryNetwork
 
     include("helper.jl")
     include("fileio/fileio.jl")
     include("qualitycontrol/qualitycontrol.jl")
     include("transformation/transformation.jl")
+    include("normalization/normalization.jl")
     include("embedding/embedding.jl")
+    include("generegulatorynetwork/generegulatorynetwork.jl")
 
-using .Fileio
-using .Qualitycontrol
+using .FileIO
+using .QualityControl
 using .Transformation
+using .Normalization
 using .Embedding
+using .GeneRegulatoryNetwork
 
 end  # module ScRNAseq
