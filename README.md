@@ -1,3 +1,3 @@
 # ScRNAseq.jl
 
-Exploratory scRNA-seq data analysis in Julia.
+Exploratory scRNA-seq data analysis in Julia
