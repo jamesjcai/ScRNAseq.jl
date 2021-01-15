@@ -10,9 +10,6 @@ function pcregress(X)
     for k in 1:n   
         y=X[:,k]
         𝒳=X[:,1:end.≠k]
-        # _,v=LinearAlgebra.eigen(𝒳'𝒳,sortby=-)
-        # v=eigvecs(𝒳'𝒳,sortby=-)
-        # v=v[:,1:3]
         _,ϕ=Arpack.eigs(𝒳'𝒳,nev=3,which=:LM)
         s=𝒳*ϕ
         s ./=(norm.(s[:,i] for i=1:size(s,2)).^2)'
