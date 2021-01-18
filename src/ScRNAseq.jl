@@ -21,6 +21,7 @@ export
     include("transformation/transformation.jl")
     include("normalization/normalization.jl")
     include("embedding/embedding.jl")
+    include("differentialexpression/differentialexpression.jl")
     include("generegulatorynetwork/generegulatorynetwork.jl")
 
 using .FileIO
@@ -28,6 +29,7 @@ using .QualityControl
 using .Transformation
 using .Normalization
 using .Embedding
+using .DifferentialExpression
 using .GeneRegulatoryNetwork
 
 end  # module ScRNAseq
