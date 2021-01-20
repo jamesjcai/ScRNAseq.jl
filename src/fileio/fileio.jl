@@ -1,13 +1,14 @@
 module FileIO
 
-using DelimitedFiles, MatrixMarket, UnicodePlots, MAT, CSV, DataFrames
-export readmm,
-       readtx,
-       readgl,
-       showx
+using DelimitedFiles, MatrixMarket, MAT, CSV, DataFrames, HDF5
+export readtxt,   # Text file   
+	   readmtx,   # MatrixMarket file
+	   readmat,   # MATLAB mat file
+	   readhdf,   # HDF5 file
+       readgenelist       
 
 
-function readmm(filename)
+function readmtx(filename)
     # read MatrixMarket file
     X=mmread(filename);
 end
@@ -20,7 +21,7 @@ function readcsv(filename)
     return X,genelist    
 end
 
-function readmt(filename)
+function readmat(filename)
     # read Matlab Mat file 
     file=matopen(filename)
     X=read(file,"X")
@@ -30,19 +31,24 @@ function readmt(filename)
     return X,genelist
 end
 
-function readtx(filename)
+function readtxt(filename)
     # read DLM text file
     X=readdlm(filename,',',Int16)
 end
 
-function readgl(filename::String,colidx::Integer=1)
+function readhdf(filename)
+    
+end
+
+function readgenelist(filename::String,colidx::Integer=1)
     # read genelist
     genelist=readdlm(filename,'\t',String)
     genelist=vec(genelist[:,colidx])
 end
 
-function showx(X)
-    spy(X)
-end
+# using UnicodePlots
+# function showx(X)
+#    spy(X)
+# end
 
 end
