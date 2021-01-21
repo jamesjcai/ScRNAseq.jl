@@ -2,7 +2,8 @@
 module DifferentialExpression
 export 
     de_mannwhitney,
-    DESeq2
+    DESeq2,
+    MAST
 
 
 using GLM: glm, coeftable, LogLink, NegativeBinomial
@@ -26,7 +27,7 @@ function de_mannwhitney(X,Y)
 end
 
 
-add_constant(X) = hcat(ones(100), X)
+add_constant(X) = hcat(ones(size(X, 1)), X)
 loge_to_log2(β) = β |> exp |> log2
 median_of_ratios_normalization(X) = normalize_geomean(X) |> scale_size_factors
 normalize_geomean(X) = X ./ mapslices(geomean, X, dims=1)
@@ -71,6 +72,17 @@ Challenging work
 ----------------
 1. Ensuring this module behaves exactly like DESeq2
 2. Going through the rest of the paper for details
+"""
+
+
+function MAST(X,Y)
+    
+end
+
+"""
+MAST: a flexible statistical framework for assessing transcriptional changes and characterizing heterogeneity 
+in single-cell RNA sequencing data G Finak, A McDavid, M Yajima, J Deng, V Gersuk, AK Shalek, CK Slichter 
+et al Genome biology 16 (1), 278
 """
 
 
