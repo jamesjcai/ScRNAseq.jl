@@ -74,8 +74,16 @@ Challenging work
 2. Going through the rest of the paper for details
 """
 
+
 function MAST(X,Y)
     
 end
+
+"""
+MAST: a flexible statistical framework for assessing transcriptional changes and characterizing heterogeneity 
+in single-cell RNA sequencing data G Finak, A McDavid, M Yajima, J Deng, V Gersuk, AK Shalek, CK Slichter 
+et al Genome biology 16 (1), 278
+"""
+
 
 end
