@@ -1,7 +1,7 @@
 name = "ScRNAseq"
 uuid = "e44c6a41-5310-4d0d-ae73-cb13410d3383"
 authors = ["James Cai <jamescai@genomezoo.net>"]
-version = "0.1.0"
+version = "0.1.1"
 
 [deps]
 Arpack = "7d9fca2a-8960-54d3-9f78-7d1dccf2cb97"

@@ -13,22 +13,26 @@ export
     Transformation,
     Normalization,
     Embedding,
+    Clustering,
+    DifferentialExpression
     GeneRegulatoryNetwork
 
-    include("helper.jl")
-    include("fileio/fileio.jl")
-    include("qualitycontrol/qualitycontrol.jl")
-    include("transformation/transformation.jl")
-    include("normalization/normalization.jl")
-    include("embedding/embedding.jl")
-    include("differentialexpression/differentialexpression.jl")
-    include("generegulatorynetwork/generegulatorynetwork.jl")
+include("helper.jl")
+include("fileio/fileio.jl")
+include("qualitycontrol/qualitycontrol.jl")
+include("transformation/transformation.jl")
+include("normalization/normalization.jl")
+include("embedding/embedding.jl")
+include("clustering/clustering.jl")
+include("differentialexpression/differentialexpression.jl")
+include("generegulatorynetwork/generegulatorynetwork.jl")
 
 using .FileIO
 using .QualityControl
 using .Transformation
 using .Normalization
 using .Embedding
+using .Clustering
 using .DifferentialExpression
 using .GeneRegulatoryNetwork
 
