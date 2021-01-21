@@ -2,7 +2,8 @@
 module DifferentialExpression
 export 
     de_mannwhitney,
-    DESeq2
+    DESeq2,
+    MAST
 
 
 using GLM: glm, coeftable, LogLink, NegativeBinomial
@@ -73,5 +74,8 @@ Challenging work
 2. Going through the rest of the paper for details
 """
 
+function MAST(X,Y)
+    
+end
 
 end
