@@ -26,7 +26,7 @@ function de_mannwhitney(X,Y)
 end
 
 
-add_constant(X) = hcat(ones(100), X)
+add_constant(X) = hcat(ones(size(X, 1)), X)
 loge_to_log2(β) = β |> exp |> log2
 median_of_ratios_normalization(X) = normalize_geomean(X) |> scale_size_factors
 normalize_geomean(X) = X ./ mapslices(geomean, X, dims=1)
