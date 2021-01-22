@@ -1,8 +1,8 @@
 
 module Normalization
 export 
-norm_libsize,
-norm_deseq
+norm_libsize
+# norm_deseq
 
 
 function norm_libsize(X)
