@@ -14,7 +14,7 @@ export
     Normalization,
     Embedding,
     Clustering,
-    DifferentialExpression
+    DifferentialExpression,
     GeneRegulatoryNetwork
 
 include("helper.jl")
