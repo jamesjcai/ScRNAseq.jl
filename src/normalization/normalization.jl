@@ -4,6 +4,8 @@ export
 norm_libsize,
 norm_deseq
 
+include("../differentialexpression/differentialexpression.jl")
+
 using .DifferentialExpression
 
 function norm_libsize(X)
