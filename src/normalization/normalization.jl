@@ -4,7 +4,7 @@ export
 norm_libsize,
 norm_deseq
 
-using ScRNAseq.DifferentialExpression
+using .DifferentialExpression
 
 function norm_libsize(X)
     lbsz=sum(X,dims=1)
