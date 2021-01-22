@@ -1,8 +1,8 @@
 # ScRNAseq.jl
 
-Exploratory scRNA-seq data analysis in Julia
+Exploratory single-cell RNA sequencing (scRNA-seq) data analysis for Julia
 
-## Installation
+### Installation
 
 Run the following command to install the latest update of the `ScRNAseq` package.
 
