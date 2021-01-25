@@ -1,16 +1,17 @@
 module Clustering
 
-using Clustering
+using Clustering, ParallelKMeans
 
 export kmeans,
-       affprop
+       kmeanspar
 
 function kmeans(X, k)
     Clustering.kmeans(X, k);
 end
 
-function affprop(X, k)
-    Clustering.affprop(X, k);
+function kmeanspar(X, k)
+    # https://pydatablog.github.io/ParallelKMeans.jl/stable/#How-To-Use
+    ParallelKMeans.kmeans(X, k);
 end
 
 end
