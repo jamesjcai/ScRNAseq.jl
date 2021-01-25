@@ -7,6 +7,23 @@ export readtxt,   # Text file
 	   readhdf,   # HDF5 file
        readgenelist       
 
+"""
+    readmtx(filename::AbstractString) -> AbstractMatrix
+
+Load and return the content of the MatrixMarket file.
+
+# Arguments
+
+- `filename::AbstractString`: the filename of the file to load,
+
+# Keywords
+
+# Returns
+- `AbstractMatrix`: the UMI matrix of the file content,
+
+# Throws
+- `Error`: in the case of file does not exist.
+"""
 
 function readmtx(filename::AbstractString)
     if isfile(filename)
