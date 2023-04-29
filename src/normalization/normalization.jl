@@ -7,7 +7,8 @@ norm_libsize
 
 function norm_libsize(X)
     lbsz=sum(X,dims=1)
-    X=(X./lbsz)*1e4;
+    γ=mean(lbsz)
+    X=(X./lbsz)*γ
     return X
 end
 
