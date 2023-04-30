@@ -5,6 +5,7 @@ export readtxt,   # Text file
 	   readmtx,   # MatrixMarket file
 	   readmat,   # MATLAB mat file
 	   readhdf,   # HDF5 file
+       read10xh5, # filtered_feature_bc_matrix.h5
        readgenelist       
 
 """
@@ -39,18 +40,18 @@ function readcsv(filename::AbstractString)
     # read CSV file with header and row name
     df = CSV.File(filename; datarow=2) |> DataFrame!
     X=convert(Matrix, df[:,2:end])
-    genelist=df[:,1]
-    return X,genelist    
+    g=df[:,1]
+    return X,g    
 end
 
 function readmat(filename::AbstractString)
     # read Matlab Mat file 
     file=matopen(filename)
     X=read(file,"X")
-    genelist=read(file,"genelist")
+    g=read(file,"g")
     close(file)
     X = convert(Array{Float64,2}, X)
-    return X,genelist
+    return X,g
 end
 
 function readtxt(filename::AbstractString)
@@ -60,6 +61,26 @@ end
 
 function readhdf(filename::AbstractString)
     # https://anndata.readthedocs.io/en/latest/anndata.AnnData.html
+end
+
+function read10xh5(filename::AbstractString)
+    # filtered_feature_bc_matrix.h5
+    # https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/advanced/h5_matrices
+    f=h5open(filename,"r")
+    d=f["matrix/data"]
+    data=read(d)
+    indices=read(f["matrix/indices"])
+    indptr=read(f["matrix/indptr"])
+    shape=read(f["matrix/shape"])    
+    X=zeros(eltype(data),shape[1],shape[2])
+    for k=1:(length(indptr)-1)
+        idx=(indptr[k]+1):indptr[k+1]
+        y=indices[idx].+1
+        X[y,k].=data[idx]
+    end
+    g=read(f["matrix/features/name"])
+    close(f)
+    return X,g
 end
 
 function readgenelist(filename::AbstractString,colidx::Integer=1)
