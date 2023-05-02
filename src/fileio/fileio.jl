@@ -45,12 +45,13 @@ function readcsv(filename::AbstractString)
 end
 
 function readmat(filename::AbstractString)
-    # read Matlab Mat file 
+    # read Matlab Mat file X is sparse matrix, g is a cellstr with genenames
     file=matopen(filename)
     X=read(file,"X")
     g=read(file,"g")
     close(file)
-    X = convert(Array{Float64,2}, X)
+    #X = convert(Array{Float64,2}, X)
+    #X = convert(Matrix{Int16}, X)
     return X,g
 end
 
