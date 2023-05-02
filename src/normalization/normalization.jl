@@ -1,5 +1,6 @@
-
 module Normalization
+using Statistics
+
 export 
 norm_libsize
 # norm_deseq
