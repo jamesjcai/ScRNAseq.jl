@@ -1,18 +1,3 @@
-struct SingleCellExperiment0
-    X::Matrix{Int16}
-    g::Vector{String}
-    SingleCellExperiment0(X,g) = size(X,1)!=length(g) ? error("size unmatch") : new(X,g)
-end
-
-
-struct SingleCellExperiment{T<:AbstractMatrix}
-    X::T
-    g::Vector{String}
-    s::Matrix    
-    SingleCellExperiment(X,g,s) = size(X,1)!=length(g) ? error("size unmatch") : new{AbstractMatrix}(X,g,s)
-end
-
-
 struct SCE{T<:AbstractMatrix}
     X::T
     g::Vector{String}
@@ -22,7 +7,6 @@ struct SCE{T<:AbstractMatrix}
         new{S}(X, g, s)
     end
 end
-
 
 struct SCE5{T<:Any, M<:AbstractMatrix{T}}
     X::M
@@ -34,28 +18,41 @@ struct SCE5{T<:Any, M<:AbstractMatrix{T}}
 #    end
 end
 
+struct SingleCellExperiment0
+    X::Matrix{Int16}
+    g::Vector{String}
+    SingleCellExperiment0(X,g) = size(X,1)!=length(g) ? error("size unmatch") : new(X,g)
+end
+
+
+
+struct SingleCellExperiment{T<:AbstractMatrix}
+    X::T
+    g::Vector{String}
+    s::Matrix    
+    SingleCellExperiment(X,g,s) = size(X,1)!=length(g) ? error("size unmatch") : new{AbstractMatrix}(X,g,s)
+end
 
 function SingleCellExperiment(X::AbstractMatrix,g::Vector{String})
     s=rand(size(X,2),3)
     SingleCellExperiment(X, g, s)
 end
 
-
 # SingleCellExperiment(X,g) = size(X,1)!=length(g) ? error("size unmatch") : new{AbstractMatrix}(X,g)
 
 
 
 using ScRNAseq
-cd("C:\\Users\\jcai\\Desktop\\refwrap_test\\forjulia")
+#cd("C:\\Users\\jcai\\Desktop\\refwrap_test\\forjulia")
+cd("C:\\Users\\jcai\\Documents\\GitHub\\ScRNAseq.jl\\test")
 
 
 using HDF5
-f=HDF5.h5open("hugedata.mat","r")
-X=read(f,"X")
-close(f)
-X=convert(Array{Int16,2}, X)
-X=convert(Matrix{Int16},X)
-
+#f=HDF5.h5open("hugedata.mat","r")
+#X=read(f,"X")
+#close(f)
+#X=convert(Array{Int16,2}, X)
+#X=convert(Matrix{Int16},X)
 
 f=HDF5.h5open("smalldata_Int16.mat","r")
 X=read(f,"X")
@@ -69,7 +66,7 @@ using MAT
 f=MAT.matopen("smalldata_sparse.mat")
 X=read(f,"X")    # out of memory error for large full matrix
 g=read(f,"g")    # not support MATLAB string, but cellstr is okay
-g=convert(Matrix{String},g)
+#g=convert(Matrix{String},g)
 close(f)
 
 X=convert(Matrix{Int16},X)
