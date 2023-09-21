@@ -13,5 +13,5 @@ using Pkg; Pkg.add(url="https://github.com/jamesjcai/ScRNAseq.jl.git")
 or
 
 ```julia
-add https://github.com/jamesjcai/ScRNAseq.jl.git
+]add https://github.com/jamesjcai/ScRNAseq.jl.git
 ```
