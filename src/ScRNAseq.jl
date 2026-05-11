@@ -15,6 +15,7 @@ export
     Embedding,
     Clustering,
     DifferentialExpression,
+    DifferentialVariability,
     GeneRegulatoryNetwork
 
 include("helper.jl")
@@ -25,6 +26,7 @@ include("normalization/normalization.jl")
 include("embedding/embedding.jl")
 include("clustering/clustering.jl")
 include("differentialexpression/differentialexpression.jl")
+include("differentialvariability/differentialvariability.jl")
 include("generegulatorynetwork/generegulatorynetwork.jl")
 
 using .FileIO
@@ -34,6 +36,7 @@ using .Normalization
 using .Embedding
 using .Clustering
 using .DifferentialExpression
+using .DifferentialVariability
 using .GeneRegulatoryNetwork
 
 end  # module ScRNAseq

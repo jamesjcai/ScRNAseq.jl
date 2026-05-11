@@ -50,6 +50,7 @@ The main module ([`src/ScRNAseq.jl`](src/ScRNAseq.jl)) includes eight submodules
 | Embedding | `src/embedding/` | `umap`, `tsne` |
 | Clustering | `src/clustering/clustering.jl` | `kmeans`, `kmeanspar` |
 | DifferentialExpression | `src/differentialexpression/differentialexpression.jl` | `de_mannwhitney`, `DESeq2` |
+| DifferentialVariability | `src/differentialvariability/differentialvariability.jl` | `dv_ftest`, `dv_levene`, `dv_brownforsythe`, `dv_splinefit` |
 | GeneRegulatoryNetwork | `src/generegulatorynetwork/` | `pcregress`, `affprop`, `SCODE` |
 
 ## Conventions

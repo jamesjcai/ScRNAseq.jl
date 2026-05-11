@@ -3,7 +3,11 @@
     "allow": [
       "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\jingc\\\\Documents\\\\GitHub\\\\ScRNAseq.jl\" -Force)",
       "Bash(Select-Object Name, PSIsContainer)",
-      "Bash(gh pr *)"
+      "Bash(gh pr *)",
+      "Bash(cd \"C:\\\\Users\\\\jingc\\\\Documents\\\\GitHub\\\\scGEAToolbox_dev\" && find . -type f -name \"*.m\" | head -20)",
+      "Bash(julia --project=. -e 'using Pkg; Pkg.add\\(\"Dierckx\"\\); println\\(\"done\"\\)')",
+      "PowerShell(Get-Command julia)",
+      "PowerShell(julia --version)"
     ]
   }
 }
