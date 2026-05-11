@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\jingc\\\\Documents\\\\GitHub\\\\ScRNAseq.jl\" -Force)",
+      "Bash(Select-Object Name, PSIsContainer)",
+      "Bash(gh pr *)"
+    ]
+  }
+}

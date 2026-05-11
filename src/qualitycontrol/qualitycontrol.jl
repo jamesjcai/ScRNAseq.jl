@@ -19,15 +19,14 @@ function selectg(X,genelist)
 end
 
 function scstats(X)
-    logmean=log10.(mean(X,dims=2));
-    logvar=log10.(var(X,dims=2));
-    dropoutrate=mean(X.==0,dims=2);
-    return logmean,logvar,dropoutrate
+    logmean    = log10.(max.(mean(X, dims=2), eps()))
+    logvar     = log10.(max.(var(X, dims=2), eps()))
+    dropoutrate = mean(X .== 0, dims=2)
+    return logmean, logvar, dropoutrate
 end
 
 function emptyrate(X)
-    # nnz(sparse(X))
-    count(!iszero,X)./count(isreal,X)
+    count(!iszero, X) / length(X)
 end
 
 end

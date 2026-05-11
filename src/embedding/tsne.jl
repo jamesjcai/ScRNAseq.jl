@@ -1,4 +1,4 @@
-import TSne, Plots
+import TSne
 
 function tsne(X)
     X = convert(Array{Float64,2}, X);

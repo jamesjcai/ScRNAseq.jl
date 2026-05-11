@@ -1,6 +1,6 @@
 module FileIO
 
-using DelimitedFiles, MatrixMarket, MAT, CSV, DataFrames, HDF5
+using DelimitedFiles, MatrixMarket, MAT, CSV, DataFrames, HDF5, SparseArrays
 export readtxt,   # Text file   
 	   readmtx,   # MatrixMarket file
 	   readmat,   # MATLAB mat file
@@ -37,11 +37,10 @@ function readmtx(filename::AbstractString)
 end
 
 function readcsv(filename::AbstractString)
-    # read CSV file with header and row name
-    df = CSV.File(filename; datarow=2) |> DataFrame!
-    X=convert(Matrix, df[:,2:end])
-    g=df[:,1]
-    return X,g    
+    df = CSV.read(filename, DataFrame)
+    X = convert(Matrix, df[:, 2:end])
+    g = df[:, 1]
+    return X, g
 end
 
 function readmat(filename::AbstractString)
@@ -67,21 +66,18 @@ end
 function read10xh5(filename::AbstractString)
     # filtered_feature_bc_matrix.h5
     # https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/advanced/h5_matrices
-    f=h5open(filename,"r")
-    d=f["matrix/data"]
-    data=read(d)
-    indices=read(f["matrix/indices"])
-    indptr=read(f["matrix/indptr"])
-    shape=read(f["matrix/shape"])    
-    X=zeros(eltype(data),shape[1],shape[2])
-    for k=1:(length(indptr)-1)
-        idx=(indptr[k]+1):indptr[k+1]
-        y=indices[idx].+1
-        X[y,k].=data[idx]
-    end
-    g=read(f["matrix/features/name"])
+    f       = h5open(filename, "r")
+    data    = read(f["matrix/data"])
+    indices = read(f["matrix/indices"])
+    indptr  = read(f["matrix/indptr"])
+    shape   = read(f["matrix/shape"])
+    g       = read(f["matrix/features/name"])
     close(f)
-    return X,g
+    X = SparseMatrixCSC(shape[1], shape[2],
+                        Int.(indptr) .+ 1,
+                        Int.(indices) .+ 1,
+                        data)
+    return X, g
 end
 
 function readgenelist(filename::AbstractString,colidx::Integer=1)

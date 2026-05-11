@@ -16,7 +16,7 @@ using StatsBase: geomean
 # MannWhitneyUTest
 
 function de_mannwhitney(X,Y)
-    assert(size(X,1)==size(Y,1))
+    @assert size(X,1) == size(Y,1)
     n=size(X,1)
     p=zeros(n,1)
     for k in 1:n
@@ -54,7 +54,7 @@ end
 
 function DESeq2(X, y)
     X_norm = median_of_ratios_normalization(X)
-    models = mapslices(X -> glm(add_constant(X), y, NegativeBinomial(), LogLink()), X_norm, dims=1)
+    models = mapslices(col -> glm(add_constant(col), y, NegativeBinomial(), LogLink()), X_norm, dims=1)
     get_DESeq2_results(models)
 end
 
